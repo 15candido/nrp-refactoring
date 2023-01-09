@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Person;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,43 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $people = Person::with('user')->get();
+    // Return All People
+    $people = Person::latest()->get();
+    // dd($people->count());
+    return view('welcome', [
+        'people' => $people
+    ]);
+});
+
+Route::get('withuser', function () {
+    // Return People Only With Users 
+    $people = Person::whereHas('user')->get();
+    // dd($people->count());
     return view('welcome', compact('people'));
+});
+
+Route::get('projects', function(){
+
+    // Return All the Projects
+    return view('projects', [
+        'projects' =>Project::all()
+    ]);
+});
+
+Route::get('projects/{project}', function ($id)
+{
+    // Give the Project where id matches is id 
+    return view('project', [
+       'project' => Project::find($id)
+    ]);
+});
+
+Route::get('users/{person}', function ($id)
+{
+    // Give the Project where id matches is id 
+    return view('projects', [
+       'projects' => Person::find($id)
+    ]);
 });
 
 
