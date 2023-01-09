@@ -40,9 +40,7 @@ class CreateNewUser implements CreatesNewUsers
             'user_id' => $user->id
         ]);
 
-        dd($person);
-
-
+        // dd($person);
         return $user;
     }
 }
