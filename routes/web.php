@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Demand;
 use App\Models\Person;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,23 @@ Route::get('collaborator/{collaborator:username}', function (Person $collaborato
        'collaborator' => $collaborator
     ]);
 });
+
+Route::get('demands', function(){
+    // Give me all the demands and their corresponding projects
+    $demands = Demand::latest()->with('projects')->get();
+    dd($demands);
+    return view('demands', [
+        'demands' => $demands
+    ]);
+});
+
+
+// Route::get('/', function () {
+
+//     return view('posts', [
+//        'posts' => Post::latest()->get() //with(['category', 'author'])->
+//     ]);
+// });
 
 Route::middleware([
     'auth:sanctum',
