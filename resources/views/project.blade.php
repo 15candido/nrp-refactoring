@@ -17,7 +17,10 @@
             <div class="flex space-x-2 border-t border-t-gray-400 py-2">
                 <strong class="font-bold">Collaborators:</strong>
                 @foreach($project->people as $participate)
-                    <a href="#" class="text-sky-600 underline mr-2">{{$participate->name}}</a>
+                    <a href="/collaborator/{{$participate->id}}" class="flex flex-wrap text-white mr-2 space-x-2
+                    space-y-3 bg-teal-400 hover:bg-teal-600 shadow-sm rounded-lg px-2 py-1">
+                        {{$participate->name}}
+                    </a>
                 @endforeach
             </div>
         </article>

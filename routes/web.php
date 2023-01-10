@@ -17,45 +17,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // Return All People
+    // Give me All People and Orderby the Last User Created
     $people = Person::latest()->get();
-    // dd($people->count());
     return view('welcome', [
         'people' => $people
     ]);
 });
 
 Route::get('withuser', function () {
-    // Return People Only With Users 
+    // Give me the People who Have the User 
     $people = Person::whereHas('user')->get();
-    // dd($people->count());
     return view('welcome', compact('people'));
 });
 
 Route::get('projects', function(){
-
-    // Return All the Projects
+    // Give me All the Projects
     return view('projects', [
         'projects' => Project::all()
     ]);
 });
 
-Route::get('projects/{project}', function ($id)
-{
-    // Give the Project where id matches is id 
+Route::get('projects/{project}', function ($id){
+    // Give me the Project where ID Matches This ID 
     return view('project', [
-       'project' => Project::find($id)
+       'project' => Project::findOrFail($id)
     ]);
 });
 
-Route::get('users/{person}', function ($id)
-{
-    // Give the Project where id matches is id 
-    return view('projects', [
-       'projects' => Person::find($id)
+Route::get('collaborator/{collaborator}', function ($id){
+    // Give me the Collaborator where ID matches this ID and Return his Collaborative Projects
+    return view('collaborator', [
+       'collaborator' => Person::findOrFail($id)
     ]);
 });
-
 
 Route::middleware([
     'auth:sanctum',

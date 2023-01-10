@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
     {
         // Person::truncate();
         // Project::truncate();
-        $users = User::factory(5)->create();
+        $users = User::factory(15)->create();
         $people = Person::factory(15)->create();
-        $projects = Project::factory(5)->create();
+        $projects = Project::factory(15)->create();
 
         foreach($users as $user){
             Person::create([

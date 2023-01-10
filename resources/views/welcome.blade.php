@@ -1,11 +1,17 @@
 <x-guestLayout>
     <div class="max-w-6xl m-auto py-16 space-y-6">
     <div class="flex gap-4">
-        <button class="text-lg font-bold text-white bg-teal-400 p-3 shadow-lg rounded-lg hover:bg-teal-600 transition-all duration-500">
+        <button class="text-lg font-bold text-white bg-teal-400 p-3 uppercase shadow-lg rounded-lg
+        hover:bg-teal-600 transition-all duration-500">
             <a href="/">All People</a>
         </button>
-        <button class="text-lg font-bold text-white bg-teal-400 p-3 shadow-lg rounded-lg hover:bg-teal-600 transition-all duration-500">
+        <button class="text-lg font-bold text-white bg-teal-400 p-3 uppercase shadow-lg rounded-lg
+        hover:bg-teal-600 transition-all duration-500">
             <a href="withuser">Only With User</a>
+        </button>
+        <button class="text-lg font-bold text-white bg-teal-400 p-3 uppercase shadow-lg rounded-lg
+        hover:bg-teal-600 transition-all duration-500">
+            <a href="projects">Projects</a>
         </button>
     </div>
     <div class="grid grid-cols-3 gap-4">
