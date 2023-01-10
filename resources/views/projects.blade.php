@@ -14,7 +14,7 @@
                     <div class="flex flex-col space-y-3">
                         <h1 class="text-xs font-black sm:text-sm md:text-base 
                         lg:text-lg xl:text-xl">
-                            <a href="projects/{{$project->slug}}" class="text-sky-600 underline">
+                            <a href="projects/{{$project->username}}" class="text-sky-600 underline">
                                 {{ $project->name }}
                             </a>
                         </h1>
@@ -22,9 +22,9 @@
                     </div>
                     <div class="flex flex-wrap space-x-2 space-y-1 border-t border-t-gray-400 py-2">
                         <strong class="font-bold">Collaborators:</strong>
-                        @foreach($project->people as $participate)
-                            <a href="/collaborator/{{$participate->slug}}" class="text-white mr-2
-                            bg-teal-400 hover:bg-teal-600 shadow-sm rounded-lg px-2 py-1">{{$participate->name}}</a>
+                        @foreach($project->collaborator as $collaborator)
+                            <a href="/collaborator/{{$collaborator->username}}" class="text-white mr-2
+                            bg-teal-400 hover:bg-teal-600 shadow-sm rounded-lg px-2 py-1">{{$collaborator->name}}</a>
                         @endforeach
                     </div>
                 </article>

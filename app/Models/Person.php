@@ -9,7 +9,7 @@ class Person extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'user_id'];
+    protected $fillable = ['name', 'username', 'email', 'user_id'];
 
     public function user()
     {
@@ -18,7 +18,7 @@ class Person extends Model
 
     public function projects()
     {
-       return $this->belongsToMany(Project::class, 
-       'person_project', 'person_id', 'project_id');
+        return $this->belongsToMany(Project::class, 
+            'person_project', 'person_id', 'project_id');
     }
 }

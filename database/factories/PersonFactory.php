@@ -19,7 +19,7 @@ class PersonFactory extends Factory
     {
         return [
             'name' => $name = $this->faker->firstName(10),
-            'slug' => Str::slug($name),
+            'username' => Str::slug($name),
             'email' => $this->faker->unique()->safeEmail(),
         ];
     }

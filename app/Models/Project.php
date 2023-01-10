@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+
 
 class Project extends Model
 {
@@ -17,9 +17,16 @@ class Project extends Model
         'description',
     ];
 
-    public function people()
+    public function collaborator()
     {
-        return $this->belongsToMany(Person::class, 'person_project', 'person_id', 'project_id');
+        return $this->belongsToMany(Person::class, 'person_project', 
+            'person_id', 'project_id');
+    }
+
+    public function demands()
+    {
+        return $this->belongsToMany(Demand::class, 'demand_project',
+            'demand_id', 'project_id');
     }
 
 }

@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+
+use App\Models\User;
 use App\Models\Person;
 use App\Models\Project;
-use App\Models\User;
+use App\Models\Demand;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -24,9 +26,10 @@ class DatabaseSeeder extends Seeder
     {
         // Person::truncate();
         // Project::truncate();
-        $users = User::factory(15)->create();
-        $people = Person::factory(15)->create();
-        $projects = Project::factory(15)->create();
+        $users      = User::factory(15)->create();
+        $people     = Person::factory(15)->create();
+        $projects   = Project::factory(15)->create();
+        $demands    = Demand::factory(10)->create();
 
 
 
@@ -34,15 +37,24 @@ class DatabaseSeeder extends Seeder
             Person::create([
                 'user_id' => $user->id,
                 'name' => $name = $user->name,
-                'slug' => Str::slug($name),
+                'username' => Str::slug($name),
                 'email' => $user->email,
             ]);
         }        
         foreach($people as $person){
             $person->projects()->attach(
                 Project::inRandomOrder()->take(rand(1,9))->pluck('id'), [
-                    'project_start_date' => fake()->date(),
-                    'project_end_date' => fake()->date(),
+                    'project_start_date'    => fake()->date(),
+                    'project_end_date'      => fake()->date(),
+                ]
+            );
+        }
+
+        foreach($projects as $project){
+            $project->demands()->attach(
+                Demand::inRandomOrder()->take(rand(1,9))->pluck('id'), [
+                    'quantity' => fake()->numberBetween(85, 25),
+                    'description' => fake()->paragraph(3, true)
                 ]
             );
         }

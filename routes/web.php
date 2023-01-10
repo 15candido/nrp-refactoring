@@ -19,33 +19,37 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // Give me All People and Orderby the Last User Created
-    $people = Person::latest()->get();
+
+    // \Illuminate\Support\Facades\DB::listen(function($query){
+    //     logger($query->sql, $query->bindings);
+    // });
+    // $people = Person::latest()->get();
     return view('welcome', [
-        'people' => $people
+        'people' =>Person::latest()->with('user')->get()
     ]);
 });
 
 Route::get('withuser', function () {
     // Give me the People who Have the User 
-    $people = Person::whereHas('user')->get();
+    $people = Person::with('user')->whereHas('user')->get();
     return view('welcome', compact('people'));
 });
 
 Route::get('projects', function(){
-    // Give me All the Projects
+    // Give me All the Projects and the Collaborators that Collaborating in each one of the Project
     return view('projects', [
-        'projects' => Project::all()
+        'projects' => Project::latest()->with(['collaborator'])->get()
     ]);
 });
 
 Route::get('projects/{project:slug}', function (Project $project){
-    // Give me the Project where ID Matches This ID 
+    // Give me the Project where ID Matches this ID and  his collaborators 
     return view('project', [
        'project' => $project
     ]);
 });
 
-Route::get('collaborator/{collaborator:slug}', function (Person $collaborator){
+Route::get('collaborator/{collaborator:username}', function (Person $collaborator){
     // Give me the Collaborator where ID matches this ID and Return his Collaborative Projects
     return view('collaborator', [
        'collaborator' => $collaborator

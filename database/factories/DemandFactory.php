@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Demand>
  */
-class ProjectFactory extends Factory
+class DemandFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,8 +20,8 @@ class ProjectFactory extends Factory
         return [
             'name' => $name = $this->faker->words(rand(2, 3), true),
             'slug' => Str::slug($name),
-            'excerpt' => fake()->text(255),
-            'description' => $this->faker->text(900)
+            'demand_start_date' => fake()->date(),
+            'demand_end_date' => fake()->date()
         ];
     }
 }
