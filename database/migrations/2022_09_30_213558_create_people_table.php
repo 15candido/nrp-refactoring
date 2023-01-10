@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->nullable() 
                 ->references('id')
-                ->on('users');
-            $table->string('name');
-            $table->string('email');
+                ->on('users')->constrained();
+            $table->string('name')->constrained();
+            $table->string('email')->constrained();
             $table->timestamps();
             
         });        

@@ -15,4 +15,9 @@ class Person extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function projects()
+    {
+       return $this->belongsToMany(Project::class, 'person_project', 'person_id', 'project_id');
+    }
 }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Person;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,18 +20,39 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
-        DB::table('users')->insert([
-            'id' => 1,            
-            'name' => 'David Freitas',
-            'email' => 'david.freitas@aeg1.pt',
-            'email_verified_at' => now(),
-            'password' => Hash::make('gapa'),
-        ]);
+        // Person::truncate();
+        // Project::truncate();
+        $users = User::factory(5)->create();
+        $people = Person::factory(15)->create();
+        $projects = Project::factory(5)->create();
 
-        $this->call([
-            PersonSeeder::class,
-        ]);
+        foreach($users as $user){
+            Person::create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+            ]);
+        }        
+        foreach($people as $person){
+            $person->projects()->attach(
+                Project::inRandomOrder()->take(rand(1,9))->pluck('id'), [
+                    'project_start_date' => fake()->date(),
+                    'project_end_date' => fake()->date(),
+                ]
+            );
+        }
+
+        // DB::table('users')->insert([
+        //     'id' => 1,            
+        //     'name' => 'David Freitas',
+        //     'email' => 'david.freitas@aeg1.pt',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('gapa'),
+        // ]);
+
+        // $this->call([
+        //     PersonSeeder::class,
+        // ]);
 
         // \App\Models\User::factory(10)->create();
         // \App\Models\User::factory()->create([

@@ -36,7 +36,7 @@ Route::get('projects', function(){
 
     // Return All the Projects
     return view('projects', [
-        'projects' =>Project::all()
+        'projects' => Project::all()
     ]);
 });
 
