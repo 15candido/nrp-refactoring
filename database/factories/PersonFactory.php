@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Person>
@@ -17,7 +18,8 @@ class PersonFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->firstName(10),
+            'name' => $name = $this->faker->firstName(10),
+            'slug' => Str::slug($name),
             'email' => $this->faker->unique()->safeEmail(),
         ];
     }

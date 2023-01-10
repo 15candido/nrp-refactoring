@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
@@ -17,7 +18,8 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->words(rand(2, 3), true),
+            'name' => $name = $this->faker->words(rand(2, 3), true),
+            'slug' => Str::slug($name),
             'excerpt' => $this->faker->text(255),
             'description' => $this->faker->text(900)
         ];

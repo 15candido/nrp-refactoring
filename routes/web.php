@@ -5,6 +5,7 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,17 +38,17 @@ Route::get('projects', function(){
     ]);
 });
 
-Route::get('projects/{project}', function ($id){
+Route::get('projects/{project:slug}', function (Project $project){
     // Give me the Project where ID Matches This ID 
     return view('project', [
-       'project' => Project::findOrFail($id)
+       'project' => $project
     ]);
 });
 
-Route::get('collaborator/{collaborator}', function ($id){
+Route::get('collaborator/{collaborator:slug}', function (Person $collaborator){
     // Give me the Collaborator where ID matches this ID and Return his Collaborative Projects
     return view('collaborator', [
-       'collaborator' => Person::findOrFail($id)
+       'collaborator' => $collaborator
     ]);
 });
 

@@ -14,7 +14,7 @@
                     <div class="flex flex-col space-y-3">
                         <h1 class="text-xs font-black sm:text-sm md:text-base 
                         lg:text-lg xl:text-xl">
-                            <a href="/projects/{{$project->id}}" class="text-sky-600 underline">
+                            <a href="/projects/{{$project->slug}}" class="text-sky-600 underline">
                                 {{ $project->name }}
                             </a>
                         </h1>

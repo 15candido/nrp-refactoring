@@ -20,6 +20,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('users')->constrained();
             $table->string('name')->constrained();
+            $table->string('slug')->nullable();
             $table->string('email')->constrained();
             $table->timestamps();
             

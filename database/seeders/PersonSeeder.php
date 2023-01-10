@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Person;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PersonSeeder extends Seeder
 {
@@ -16,7 +17,8 @@ class PersonSeeder extends Seeder
     public function run()
     {
         Person::create([
-            'name' => 'David Freitas',
+            $name = 'name' => 'David Freitas',
+            'slug' => Str::slug($name),
             'email' => 'david.freitas@aeg1.pt',
             'user_id' => 1
         ]);

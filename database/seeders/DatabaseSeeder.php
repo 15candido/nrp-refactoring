@@ -7,9 +7,11 @@ namespace Database\Seeders;
 use App\Models\Person;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,10 +28,13 @@ class DatabaseSeeder extends Seeder
         $people = Person::factory(15)->create();
         $projects = Project::factory(15)->create();
 
+
+
         foreach($users as $user){
             Person::create([
                 'user_id' => $user->id,
-                'name' => $user->name,
+                'name' => $name = $user->name,
+                'slug' => Str::slug($name),
                 'email' => $user->email,
             ]);
         }        
