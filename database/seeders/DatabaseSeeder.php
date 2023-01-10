@@ -29,8 +29,9 @@ class DatabaseSeeder extends Seeder
         $users      = User::factory(15)->create();
         $people     = Person::factory(15)->create();
         $projects   = Project::factory(15)->create();
+        
         $demands    = Demand::factory(10)->create();
-
+        
 
 
         foreach($users as $user){
@@ -40,7 +41,8 @@ class DatabaseSeeder extends Seeder
                 'username' => Str::slug($name),
                 'email' => $user->email,
             ]);
-        }        
+        }                
+
         foreach($people as $person){
             $person->projects()->attach(
                 Project::inRandomOrder()->take(rand(1,9))->pluck('id'), [
@@ -49,15 +51,19 @@ class DatabaseSeeder extends Seeder
                 ]
             );
         }
+        
 
-        foreach($projects as $project){
-            $project->demands()->attach(
-                Demand::inRandomOrder()->take(rand(1,9))->pluck('id'), [
-                    'quantity' => fake()->numberBetween(85, 25),
-                    'description' => fake()->paragraph(3, true)
-                ]
-            );
+        foreach($projects as $project){        
+            // $project->demands()->attach(
+            //     Demand::inRandomOrder()->take(rand(1,9))->pluck('id'), [
+            //         'quantity' => fake()->numberBetween(85, 25),
+            //         'description' => fake()->paragraph(3, true)
+            //     ]
+            // );            
+            $demand = Demand::all()->random();
+            $project->demands()->attach($demand);            
         }
+        
 
         // DB::table('users')->insert([
         //     'id' => 1,            

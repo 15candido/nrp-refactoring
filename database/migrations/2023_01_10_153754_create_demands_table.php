@@ -29,7 +29,7 @@ return new class extends Migration
                 ->references('id')->on('demands')
                 ->constrained();
             $table->foreignId('project_id')->nullable() 
-                ->references('id')->on('demands')
+                ->references('id')->on('projects')
                 ->constrained();
             $table->integer('quantity')->nullable();
             $table->text('description')->nullable();
