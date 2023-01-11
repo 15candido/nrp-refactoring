@@ -60,19 +60,10 @@ Route::get('collaborator/{collaborator:username}', function (Person $collaborato
 Route::get('demands', function(){
     // Give me all the demands and their corresponding projects
     $demands = Demand::latest()->with('projects')->get();
-    dd($demands);
     return view('demands', [
         'demands' => $demands
     ]);
 });
-
-
-// Route::get('/', function () {
-
-//     return view('posts', [
-//        'posts' => Post::latest()->get() //with(['category', 'author'])->
-//     ]);
-// });
 
 Route::middleware([
     'auth:sanctum',

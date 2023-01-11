@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable();
+            $table->text('description')->nullable();
             $table->date('demand_start_date');
             $table->date('demand_end_date');
 
@@ -32,8 +33,7 @@ return new class extends Migration
                 ->references('id')->on('projects')
                 ->constrained();
             $table->integer('quantity')->nullable();
-            $table->text('description')->nullable();
-
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

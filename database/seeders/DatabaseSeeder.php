@@ -24,8 +24,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Person::truncate();
-        // Project::truncate();
+
         $users      = User::factory(15)->create();
         $people     = Person::factory(15)->create();
         $projects   = Project::factory(15)->create();

@@ -14,17 +14,17 @@
                     <div class="flex flex-col space-y-3">
                         <h1 class="text-xs font-black sm:text-sm md:text-base 
                         lg:text-lg xl:text-xl">
-                            <a href="" class="text-sky-600 underline">
+                            <a href="#" class="text-sky-600 underline">
                                 {{ $demand->name }}
                             </a>
                         </h1>
-                        <p class="leading-7">{{ $demand->pivot->description }}</p>
+                        <p class="leading-7">{{ $demand->description }}</p>
                     </div>
                     <div class="flex flex-wrap space-x-2 space-y-1 border-t border-t-gray-400 py-2">
-                        <strong class="font-bold">Collaborators:</strong>
+                        <strong class="font-bold">Projects:</strong>
                         @foreach($demand->projects as $project)
-                            <a href="#" class="text-white mr-2
-                            bg-teal-400 hover:bg-teal-600 shadow-sm rounded-lg px-2 py-1">{{$collaborator->name}}</a>
+                            <a href="/projects/{{$project->slug}}" class="text-white mr-2
+                            bg-teal-400 hover:bg-teal-600 shadow-sm rounded-lg px-2 py-1">{{$project->name}}</a>
                         @endforeach
                     </div>
                 </article>

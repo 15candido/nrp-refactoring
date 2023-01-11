@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable() 
-                ->references('id')->on('users')
+            $table->foreignId('user_id')
+                ->nullable()
                 ->constrained();
-            $table->string('name')->constrained();
-            $table->string('username')->nullable()->unique()->constrained();
-            $table->string('email')->constrained();
+            $table->string('name');
+            $table->string('username')->nullable()->unique();
+            $table->string('email')->nullable()->unique();
             $table->timestamps();
             
         });        

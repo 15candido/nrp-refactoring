@@ -21,7 +21,7 @@ class ProjectFactory extends Factory
             'name' => $name = $this->faker->words(rand(2, 3), true),
             'slug' => Str::slug($name),
             'excerpt' => fake()->text(255),
-            'description' => $this->faker->text(900)
+            'description' => $this->faker->text(500)
         ];
     }
 }

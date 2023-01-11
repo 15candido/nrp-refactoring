@@ -20,6 +20,7 @@ class DemandFactory extends Factory
         return [
             'name' => $name = $this->faker->words(rand(2, 3), true),
             'slug' => Str::slug($name),
+            'description' => fake()->text(500),
             'demand_start_date' => fake()->date(),
             'demand_end_date' => fake()->date()
         ];

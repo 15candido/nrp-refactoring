@@ -11,13 +11,13 @@ class Demand extends Model
 
     protected $fillable = [
         'name',
+        'description',
         'demand_start_date',
         'demand_end_date',
     ];
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'demand_project',
-            'demand_id', 'project_id');
+        return $this->belongsToMany(Project::class)->withPivot('quantity', 'note');
     }
 }
