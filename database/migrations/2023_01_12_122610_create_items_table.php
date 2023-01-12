@@ -33,6 +33,20 @@ return new class extends Migration
             $table->string('note');
             $table->timestamps();
         });
+
+        Schema::create('item_person', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('item_id')->nullable()->constrained();
+                // ->onUpdate()
+                // ->onDelete();
+            $table->foreignId('person_id')->nullable()->constrained();
+                // ->onUpdate()
+                // ->onDelete();
+            $table->integer('quantity');
+            $table->string('note');
+            $table->date('donate_date');
+            $table->timestamps();
+        });
     }
 
     /**
