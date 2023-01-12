@@ -79,5 +79,16 @@ class DatabaseSeeder extends Seeder
                 ]
             );
         }
+
+        foreach($people as $person){
+            $person->items()->attach(
+                Item::inRandomOrder()->take(rand(1,9))->pluck('id'), [
+                
+                    'quantity' => fake()->numberBetween(2, 25),
+                    'note' => fake()->text(150),
+                    'donate_date' => fake()->date()
+                ]
+            );
+        }
     }
 }
