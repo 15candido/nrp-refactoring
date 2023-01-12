@@ -25,8 +25,7 @@ class Project extends Model
 
     public function demands()
     {
-        return $this->belongsToMany(Demand::class, 'demand_project',
-            'demand_id', 'project_id');
+        return $this->belongsToMany(Demand::class)->withPivot('quantity', 'note');
     }
 
 }
