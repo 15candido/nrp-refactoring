@@ -29,6 +29,7 @@ return new class extends Migration
             $table->foreignId('item_id')->nullable()->constrained();
                 // ->onUpdate()
                 // ->onDelete();
+            $table->integer('quantity');
             $table->string('note');
             $table->timestamps();
         });
