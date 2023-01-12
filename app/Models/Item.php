@@ -15,4 +15,9 @@ class Item extends Model
         'slug', 
         'description'
     ];
+
+    public function demands()
+    {
+        return $this->belongsToMany(Demand::class)->withPivot('quantity', 'note');
+    }
 }
