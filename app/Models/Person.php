@@ -21,4 +21,9 @@ class Person extends Model
         return $this->belongsToMany(Project::class, 
             'person_project', 'person_id', 'project_id');
     }
+
+    public function items()
+    {
+        return $this->belongsToMany(Item::class)->withPivot('quantity', 'note', 'donate_date');
+    }
 }
