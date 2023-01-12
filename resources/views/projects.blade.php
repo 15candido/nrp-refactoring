@@ -6,7 +6,7 @@
     <div class="max-w-7xl m-auto py-20 space-y-6 bg-white">
         <button class="text-lg font-bold text-white bg-teal-400 p-3 uppercase shadow-lg rounded-lg
         hover:bg-teal-600 transition-all duration-500">
-            <a href="/">Home</a>
+            <a href="/">Go Back!</a>
         </button>
        <div class="grid grid-cols-2 gap-4">
             @foreach ($projects as $project)
