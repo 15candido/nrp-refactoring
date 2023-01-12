@@ -23,12 +23,12 @@ return new class extends Migration
 
         Schema::create('demand_item', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('demand_id')->nullable()->constrained()
-                ->onUpdate()
-                ->onDelete();
-            $table->foreignId('item_id')->nullable()->constrained()
-                ->onUpdate()
-                ->onDelete();
+            $table->foreignId('demand_id')->nullable()->constrained();
+                // ->onUpdate()
+                // ->onDelete();
+            $table->foreignId('item_id')->nullable()->constrained();
+                // ->onUpdate()
+                // ->onDelete();
             $table->string('note');
             $table->timestamps();
         });
