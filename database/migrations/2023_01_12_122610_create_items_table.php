@@ -26,6 +26,9 @@ return new class extends Migration
             $table->foreignId('demand_id')->nullable()->constrained()
                 ->onUpdate()
                 ->onDelete();
+            $table->foreignId('item_id')->nullable()->constrained()
+                ->onUpdate()
+                ->onDelete();
             $table->string('note');
             $table->timestamps();
         });
