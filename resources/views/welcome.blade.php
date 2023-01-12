@@ -17,9 +17,12 @@
         hover:bg-teal-600 transition-all duration-500">
             <a href="demands">Demands</a>
         </button>
+        <button class="text-lg font-bold text-white bg-teal-400 p-3 uppercase shadow-lg rounded-lg
+        hover:bg-teal-600 transition-all duration-500">
+            <a href="necessities">Necessities</a>
+        </button>
     </div>
     <div class="grid grid-cols-3 gap-4">
-
         @foreach ($people as $person)
             <div class="space-y-6 border shadow-md rounded-lg hover:bg-gray-50">
                 {{-- People--}}
