@@ -20,4 +20,10 @@ class Item extends Model
     {
         return $this->belongsToMany(Demand::class)->withPivot('quantity', 'note');
     }
+
+    public function donation()
+    {
+        return $this->belongsToMany(Person::class, 'item_person', 'item_id','person_id')
+            ->withPivot('quantity', 'note', 'donate_date');
+    }
 }
