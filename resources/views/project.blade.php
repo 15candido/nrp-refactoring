@@ -1,11 +1,14 @@
 <x-guestLayout>
-
     {{-- Page title --}}
     <x-slot name="title">
         {{ $project->name }}
     </x-slot>
-
+    
     <div class="max-w-4xl m-auto py-20 space-y-6 bg-white">
+        <button class="text-lg font-bold text-white bg-teal-400 p-3 uppercase shadow-lg rounded-lg
+        hover:bg-teal-600 transition-all duration-500">
+            <a href="/">Go Back!</a>
+        </button>
         <article class="bg-gray-100 space-y-6 p-2">
             <div class="flex flex-col space-y-3">
                 <h1 class="ext-xs font-black text-gray-700 sm:text-sm md:text-base 
@@ -24,11 +27,5 @@
                 @endforeach
             </div>
         </article>
-        <div>
-            <a href="/projects" class="text-xs font-medium underline text-sky-600 sm:text-sm 
-            md:text-base lg:text-lg xl:text-xl">
-                Go Back
-            </a>
-        </div>
     </div>
 </x-guestLayouts>
