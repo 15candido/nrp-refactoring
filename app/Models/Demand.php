@@ -20,4 +20,9 @@ class Demand extends Model
     {
         return $this->belongsToMany(Project::class)->withPivot('quantity', 'note');
     }
+
+    public function items()
+    {
+        return $this->belongsToMany(Item::class)->withPivot('quantity','note');
+    }
 }
