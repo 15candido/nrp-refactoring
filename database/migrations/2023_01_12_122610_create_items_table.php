@@ -15,6 +15,18 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->string('slug');
+            $table->timestamps();
+        });
+
+        Schema::create('demand_item', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('demand_id')->nullable()->constrained()
+                ->onUpdate()
+                ->onDelete();
+            $table->string('note');
             $table->timestamps();
         });
     }
