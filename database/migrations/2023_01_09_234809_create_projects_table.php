@@ -27,16 +27,14 @@ return new class extends Migration
 
         Schema::create('person_project', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id')->nullable()
-                ->references('id')->on('people')
-                ->constrained();
-            $table->foreignId('project_id')->nullable()
-                ->references('id')->on('projects')
-                ->constrained();
-            $table->date('project_start_date')->nullable()
-                ->constrained();
-            $table->date('project_end_date')->nullable()
-                ->constrained();
+            $table->foreignId('person_id')->nullable()->constrained()
+                ->onUpdate()
+                ->onDelete();
+            $table->foreignId('project_id')->nullable()->constrained()
+                ->onUpdate()
+                ->onDelete();
+            $table->date('project_start_date')->nullable();
+            $table->date('project_end_date')->nullable();
             $table->timestamps();
         });
     }

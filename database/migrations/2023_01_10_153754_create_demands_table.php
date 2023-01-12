@@ -20,18 +20,17 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('demand_start_date');
             $table->date('demand_end_date');
-
             $table->timestamps();
         });
 
         Schema::create('demand_project', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('demand_id')->nullable() 
-                ->references('id')->on('demands')
-                ->constrained();
-            $table->foreignId('project_id')->nullable() 
-                ->references('id')->on('projects')
-                ->constrained();
+            $table->foreignId('demand_id')->nullable()->constrained()
+                ->onUpdate()
+                ->onDelete();
+            $table->foreignId('project_id')->nullable()->constrained()
+                ->onUpdate()
+                ->onUpdate();
             $table->integer('quantity')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
