@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
                 Item::inRandomOrder()->take(rand(1,9))->pluck('id'), [
                 
                     'quantity' => fake()->numberBetween(2, 25),
-                    'note' => fake()->text(150),
+                    'note' => fake()->text(85),
                     'donate_date' => fake()->date()
                 ]
             );
