@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Demand;
+use App\Models\Item;
 use App\Models\Person;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,20 @@ Route::get('demands', function(){
     $demands = Demand::latest()->with('projects')->get();
     return view('demands', [
         'demands' => $demands
+    ]);
+});
+
+Route::get('demands/{demand:slug}', function(Demand $demand){
+    // Give me the demand where id matches this id and  his items 
+    return view('demand', [
+        'demand' => $demand
+    ]);
+});
+
+Route::get('necessities', function(){
+    // Give me All the Projects and the Collaborators that Collaborating in each one of the Project
+    return view('items', [
+        'items' => Item::latest()->with(['demands'])->get()
     ]);
 });
 
