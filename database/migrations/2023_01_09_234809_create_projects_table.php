@@ -17,24 +17,20 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->nullable();
-            $table->string('excerpt');
+            $table->string('slug')->unique();
+            $table->string('short_description');
             $table->text('description');
-            $table->date('publish_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
             $table->timestamps();
         });
 
         Schema::create('person_project', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
-            $table->foreignId('project_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
-            $table->date('project_start_date')->nullable();
-            $table->date('project_end_date')->nullable();
+            $table->foreignId('person_id')->nullable()->constrained();                
+            $table->foreignId('project_id')->nullable()->constrained();                
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
             $table->timestamps();
         });
     }

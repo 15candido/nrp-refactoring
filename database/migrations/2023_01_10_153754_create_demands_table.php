@@ -25,12 +25,8 @@ return new class extends Migration
 
         Schema::create('demand_project', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('demand_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
-            $table->foreignId('project_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onUpdate();
+            $table->foreignId('demand_id')->nullable()->constrained();                
+            $table->foreignId('project_id')->nullable()->constrained();                
             $table->integer('quantity')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
