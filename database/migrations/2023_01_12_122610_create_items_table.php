@@ -24,11 +24,7 @@ return new class extends Migration
         Schema::create('demand_item', function (Blueprint $table) {
             $table->id();
             $table->foreignId('demand_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
             $table->foreignId('item_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
             $table->integer('quantity');
             $table->string('note');
             $table->timestamps();
@@ -37,11 +33,7 @@ return new class extends Migration
         Schema::create('item_person', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
             $table->foreignId('person_id')->nullable()->constrained();
-                // ->onUpdate()
-                // ->onDelete();
             $table->integer('quantity');
             $table->string('note');
             $table->date('donate_date');
